@@ -57,7 +57,12 @@ Vanno installati tramite Yast i seguenti file:
 per gli utenti OpenSuse effettuare la ricerca anche per tipo di file in quanto potrebbe essere contenuto il file all'interno di altre librerie/programmi
 ## 🎥 Video Dimostrativo
 
-Guarda il video dimostrativo su [YouTube]([https://www.youtube.com/watch?v=ID_DEL_VIDEO](https://youtu.be/WmFyPfeM_6o).
+Guarda il video dimostrativo su [YouTube]([https://www.youtube.com/watch?v=WmFyPfeM_6o](https://youtu.be/WmFyPfeM_6o).
+## 🎥 Video Dimostrativo
+
+[![Guarda il Video su YouTube](https://img.youtube.com/vi/WmFyPfeM_6o/0.jpg)]([https://www.youtube.com/watch?v=WmFyPfeM_6o](https://youtu.be/WmFyPfeM_6o?si=gyku3e8gWMmEhRJ2)
+https://youtu.be/WmFyPfeM_6o?si=gyku3e8gWMmEhRJ2
+https://youtu.be/WmFyPfeM_6o
 
 
 ## 🤝 Contribuire
