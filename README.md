@@ -51,8 +51,14 @@ Prima di eseguire lo script, assicuratevi di avere installato i seguenti strumen
 ## Installazione per OpenSuse
 
 Vanno installati tramite Yast i seguenti file:
-- xlstproc (serve per trasformare  XML con un maschera XSL in HTML)
-- wkhtmltopdf (serve per trasformare un file HTML in file PDF)
+- **xlstproc** (serve per trasformare  XML con un maschera XSL in HTML)
+- **wkhtmltopdf** (serve per trasformare un file HTML in file PDF)
+
+per gli utenti OpenSuse effettuare la ricerca anche per tipo di file in quanto potrebbe essere contenuto il file all'interno di altre librerie/programmi
+## 🎥 Video Dimostrativo
+
+Guarda il video dimostrativo su [YouTube]([https://www.youtube.com/watch?v=ID_DEL_VIDEO](https://youtu.be/WmFyPfeM_6o).
+
 
 ## 🤝 Contribuire
 
