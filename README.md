@@ -37,6 +37,7 @@ Prima di eseguire lo script, assicuratevi di avere installato i seguenti strumen
 ## Installazione per derivate Debian
    ```bash
    sudo apt-get install xsltproc wkhtmltopdf
+```
 
 ## Installazione per OpenSuse
 
