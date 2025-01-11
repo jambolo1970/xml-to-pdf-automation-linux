@@ -7,7 +7,7 @@ Permette di trasformare in file pdf le fatture elettroniche xml scaricate dallo 
 
 Questo repository contiene uno script bash, `genera_pdf.sh`, progettato per automatizzare la conversione di file XML in PDF utilizzando i fogli di stile XSL su sistemi Linux. È stato scritto principalmente per il programma Gestionale Open per tanto i fogli di stile verranno cercati nella sotto cartella dell'utente in /home/utente/.wine/... Lo script è altamente flessibile e facile da usare, consentendo agli utenti di:
 
-- Selezionare tra più fogli di stile XSLT.
+- Selezionare tra più fogli di stile XSLT, presenti nella directory `exe` del programma GestionaleOpen.
 - Elaborare i file da qualsiasi directory specificata.
 - Produrre file PDF nella directory dei dati o in una destinazione predefinita.
 
