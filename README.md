@@ -24,6 +24,14 @@ Questo strumento è ideale per sviluppatori, aziende o chiunque abbia bisogno di
 - **Gestione degli errori**: Assicura un funzionamento regolare con messaggi informativi per gli errori e i file mancanti.
 
 ---
+## Modifiche da Effetture dall'utente
+- file **genera_pdf.sh** : va modificato il nome della directory finale,
+     1. dove documenti_XXXX corrisponde alla cartelle documenti dell'utente che utilizzate
+     2. Fatture_elettroniche_AAAA : corrisponde alla cartella dove volete salvare le vostre fatture in formato PDF o entrambe sia XLS che PDF
+        
+  ```bash
+  ../documenti_TEX9/Fatture_elettroniche_AAAA
+  ```
 
 ## 🚀 Requisiti
 
