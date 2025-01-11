@@ -26,8 +26,8 @@ Questo strumento è ideale per sviluppatori, aziende o chiunque abbia bisogno di
 ---
 ## Modifiche da Effetture dall'utente
 - file **genera_pdf.sh** : va modificato il nome della directory finale,
-     1. dove documenti_XXXX corrisponde alla cartelle documenti dell'utente che utilizzate
-     2. Fatture_elettroniche_AAAA : corrisponde alla cartella dove volete salvare le vostre fatture in formato PDF o entrambe sia XLS che PDF
+     1. dove `documenti_XXXX` corrisponde alla cartelle documenti dell'utente che utilizzate
+     2. dove `Fatture_elettroniche_AAAA` : corrisponde alla cartella dove volete salvare le vostre fatture in formato PDF o entrambe sia XLS che PDF
 
 La riga da modificare è riga 11 corrispondente alla directoy di default.
   ```bash
