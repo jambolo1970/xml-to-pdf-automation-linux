@@ -53,3 +53,7 @@ Prima di eseguire lo script, assicuratevi di avere installato i seguenti strumen
 Vanno installati tramite Yast i seguenti file:
 - xlstproc (serve per trasformare  XML con un maschera XSL in HTML)
 - wkhtmltopdf (serve per trasformare un file HTML in file PDF)
+
+## 🤝 Contribuire
+
+I contributi sono benvenuti! Sentitevi liberi di inviare una richiesta di pull o di aprire un problema per suggerire miglioramenti o segnalare bug, sarò ben lieto di modificare e migliorare questo script.
