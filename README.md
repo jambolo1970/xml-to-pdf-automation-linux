@@ -24,12 +24,12 @@ Questo strumento è ideale per sviluppatori, aziende o chiunque abbia bisogno di
 - **Gestione degli errori**: Assicura un funzionamento regolare con messaggi informativi per gli errori e i file mancanti.
 
 ---
-## Modifiche da Effetture dall'utente
+## 📝 Modifiche da Effetture dall'utente
 - file **genera_pdf.sh** : va modificato il nome della directory finale,
      1. dove `documenti_XXXX` corrisponde alla cartelle documenti dell'utente che utilizzate
      2. dove `Fatture_elettroniche_AAAA` : corrisponde alla cartella dove volete salvare le vostre fatture in formato PDF o entrambe sia XLS che PDF
 
-La riga da modificare è riga 11 corrispondente alla directoy di default.
+- La riga da modificare è riga 11 corrispondente alla directoy di default.
   ```bash
   ../documenti_TEX9/Fatture_elettroniche_AAAA
   ```
@@ -43,12 +43,12 @@ Prima di eseguire lo script, assicuratevi di avere installato i seguenti strumen
 2. **wkhtmltopdf**
    Per trasformare da HTML a file PDF:
 
-## Installazione per derivate Debian
+## 🛠️ Installazione per derivate Debian
    ```bash
    sudo apt-get install xsltproc wkhtmltopdf
 ```
 
-## Installazione per OpenSuse
+## 🛠️ Installazione per OpenSuse
 
 Vanno installati tramite Yast i seguenti file:
 - **xlstproc** (serve per trasformare  XML con un maschera XSL in HTML)
