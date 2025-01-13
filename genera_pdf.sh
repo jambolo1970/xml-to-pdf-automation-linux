@@ -8,7 +8,25 @@ STILE_DIR="/home/$USER/.wine/drive_c/Gestionale_Open/Files/Programma_GO/exe"
 FOGLI_DI_STILE=("FoglioStile.xsl" "FoglioStileAssoSoftware.xsl" "FoglioStilePrivati.xsl" "FoglioStilePA.xsl")
 
 # Directory di destinazione predefinita
-DESTINAZIONE_DEFAULT="/home/$USER/.wine/drive_c/Gestionale_Open/Files/Programma_GO/documenti_TEX9/Fatture_elettroniche_AAAA"
+# La directory di destinaizone di default, va assegnata manualmente anno per anno, per tanto le fatture che si 
+# trasformano in pdf devono essere assegnate al proprio anno di riferimento prima di essere lanciato lo scrip
+# ad esempio se nel 2021 si erano scaricati i file xml delle fatture, e si vuole stampare il pdf corrispondente
+# nella cartella appropriata questo dovrà puntare nella directory che si decide assegnare per quell'anno
+# non è obbligatori che sia all'interno della cartella Documenti-utente
+# Si potrebbe assegnare l'anno in automatico con l'istruzione YEAR=$(date +%Y) in questo caso togliere il # alla riga successiva
+#
+# YEAR=$(date +%Y) # Ottiene l'anno corrente
+#
+# mentre per l'utente dovete assegnarlo voi, quindi UTNX va cambiato col vostro utente di GO-GestionaleOpen
+#
+# DESTINAZIONE_DEFAULT="/home/$USER/.wine/drive_c/Gestionale_Open/Files/Programma_GO/documenti_UTNX/Fatture_elettroniche_$YEAR"
+#
+# Naturalmente se vengono usate le due istruzioni sopra va messo il # su questa sotto, attenzione che in questo modo si potanno
+# fare solo quelle dell'anno in corso, se per esempio siete nel 2025 e volete stampare il 2024  vi verranno comunque messe nella
+# cartella del 2025, se invece volete trasformare in pdf tutte le fatture del 2019 dovete mettere il # nelle due righe sopra e 
+# assegnare la directory corretta nella riga sottostante.
+#
+DESTINAZIONE_DEFAULT="/home/$USER/.wine/drive_c/Gestionale_Open/Files/Programma_GO/documenti_UTNX/Fatture_elettroniche_AAAA"
 
 # Funzione per selezionare il foglio di stile
 seleziona_foglio_stile() {
