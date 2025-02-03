@@ -2,7 +2,13 @@
 Permette di trasformare in file pdf le fatture elettroniche xml oppure file xml.p7m scaricate dallo SDI o da chi vi fornisce il servizio di destinatario, attraverso i fogli di stile presenti nel prgramma Gestionale Open
 
 # Script di automazione da XML a PDF per Linux
-
+Procede fondamentalmente in questo modo:
+- cerca tutti i file.xml-p7m
+- li trasforma in xml normali
+- prende tutti i file xml presenti nella directory
+- li trasforma in pdf
+In questo modo si hanno a disposizione sia i file xml non firmati che firmati, che file pdf da poter stampare e controllare nella contabilità
+ 
 ## 🛠️ Panoramica
 
 Questo repository contiene uno script bash, `genera_pdf.sh`, progettato per automatizzare la conversione di file XML in PDF utilizzando i fogli di stile XSL su sistemi Linux. 
