@@ -133,3 +133,7 @@ La parte `documenti_UTNX` deve essere adattata al proprio utente/documenti di Ge
 ## Licenza
 
 GPL-3.0.
+
+## 🤝 Contribuire
+
+I contributi sono benvenuti! Sentitevi liberi di inviare una richiesta di pull o di aprire un problema per suggerire miglioramenti o segnalare bug, sarò ben lieto di modificare e migliorare questo script.
