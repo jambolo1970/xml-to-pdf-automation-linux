@@ -1,84 +1,135 @@
-# xml-to-pdf-automation-linux
-Permette di trasformare in file pdf le fatture elettroniche xml oppure file xml.p7m scaricate dallo SDI o da chi vi fornisce il servizio di destinatario, attraverso i fogli di stile presenti nel prgramma Gestionale Open
+# XML to PDF Automation Linux
 
-# Script di automazione da XML a PDF per Linux
-Procede fondamentalmente in questo modo:
-- cerca tutti i file.xml-p7m
-- li trasforma in xml normali
-- prende tutti i file xml presenti nella directory
-- li trasforma in pdf
-In questo modo si hanno a disposizione sia i file xml non firmati che firmati, che file pdf da poter stampare e controllare nella contabilità
- 
-## 🛠️ Panoramica
+Script Bash per trasformare fatture elettroniche italiane in PDF partendo da file `.xml` oppure `.xml.p7m`, usando i fogli di stile XSL di Gestionale Open.
 
-Questo repository contiene uno script bash, `genera_pdf.sh`, progettato per automatizzare la conversione di file XML in PDF utilizzando i fogli di stile XSL su sistemi Linux. 
-È stato scritto principalmente per il programma Gestionale Open per tanto i fogli di stile verranno cercati nella sotto cartella dell'utente in /home/utente/.wine/... Lo script è altamente flessibile e facile da usare, consentendo agli utenti di:
+Il programma lavora in due fasi:
 
-- Selezionare tra più fogli di stile XSLT, presenti nella directory `exe` del programma GestionaleOpen.
-- trasformare i file xml.p7m (che sono firmati digitalmente) in file xml
-- Elaborare i file da qualsiasi directory specificata.
-- Produrre file PDF nella directory dei dati o in una destinazione predefinita.
+1. cerca i file `.xml.p7m` e li estrae in `.xml`, senza cancellare il file XML generato;
+2. prende tutti i file `.xml` presenti nella cartella e li trasforma in PDF A4 tramite XSLT e `wkhtmltopdf`.
 
-Questo strumento è ideale per sviluppatori, aziende o chiunque abbia bisogno di automatizzare la trasformazione di dati XML e xml.p7m in documenti PDF dall'aspetto professionale, da un singolo file a una quantità anche annuale di file.
+## Novità principali
 
----
+- Avvio grafico senza terminale.
+- Barra di avanzamento durante la conversione.
+- Testo descrittivo che mostra cosa sta facendo il programma: estrazione P7M, trasformazione XML, generazione PDF.
+- Visualizzazione del file log a fine processo per vedere eventuali anomalie.
+- Installazione o aggiornamento del lanciatore dal file `installa-lanciatore.sh`.
+- Disinstallazione del lanciatore dal file `disinstalla-lanciatore.sh` oppure dal menu di `installa-lanciatore.sh`.
+- Icona dedicata del progetto, senza dipendere da icone di altri programmi come `masterpdfeditor`.
+- Riconoscimento base della distribuzione Linux tramite `/etc/os-release`.
+- Installazione automatica delle dipendenze su openSUSE e Linux Mint/Ubuntu/Debian.
+- Interfaccia grafica con `zenity`, con fallback a `kdialog` dove disponibile.
+- Versione da terminale ancora disponibile tramite `genera_pdf.sh`.
 
-## ✨ Caratteristiche
+## Dipendenze
 
-- **Rilevamento automatico dell'utente**: Non è necessario configurare manualmente il nome utente; si adatta all'utente Linux corrente.
-- **Va specificato l'azienda**: è necessario specificare l'azienda e la relativa directoy dove andare a salvare i file se si vuole utlizzare una directory standard.
-- **Percorsi di ingresso e di uscita dinamici**: Supporta directory XML e XML.P7M personalizzate e posizioni di output predefinite.
-- **Selezione interattiva**: Permette di scegliere tra una serie di fogli di stile XSLT per una maggiore flessibilità.
-- **Generazione di PDF**: Crea automaticamente file PDF in formato A4 utilizzando `wkhtmltopdf`.
-- **Gestione degli errori**: Assicura un funzionamento regolare con messaggi informativi per gli errori e i file mancanti.
+Il programma usa:
 
----
-## 📝 Modifiche da Effetture dall'utente
-- file **genera_pdf.sh** : va modificato il nome della directory finale,
-     1. dove `documenti_XXXX` corrisponde alla cartelle documenti dell'utente che utilizzate
-     2. dove `Fatture_elettroniche_AAAA` : corrisponde alla cartella dove volete salvare le vostre fatture in formato PDF o entrambe sia XLS che PDF, oppure lasciare l'opzione $YEAR che vi genererà i file pdf nella cartella dell'anno corrente
+- `openssl`, per estrarre XML dai file `.p7m`;
+- `xsltproc`, per applicare il foglio di stile XSL;
+- `wkhtmltopdf`, per generare il PDF;
+- `zenity` o `kdialog`, per usare il lanciatore senza aprire il terminale;
+- `xdg-utils`, per aggiornare menu e integrazione desktop.
 
-- La riga da modificare è riga 11 corrispondente alla directoy di default.
-  ```bash
-  ../documenti_TEX9/Fatture_elettroniche_AAAA
-  ```
+Su openSUSE il pacchetto che fornisce `xsltproc` può essere `libxslt-tools` o, su alcune versioni/repository, `libxslt1`.
 
-## 🚀 Requisiti
+## Installazione rapida
 
-Prima di eseguire lo script, assicuratevi di avere installato i seguenti strumenti:
+Scarica il progetto, entra nella cartella e avvia:
 
-1. **xsltproc**  
-   Per applicare le trasformazioni XSLT, serve per trasformare  XML con un maschera XSL in HTML:
-2. **wkhtmltopdf**
-   Per trasformare da HTML a file PDF:
-3. **openssl**
-   per estrarre XML dai .p7m:
-4. **openssl-ibmpkcs11**
-   potrebbe essere necessario se genera file pdf bianchi
+```bash
+chmod +x installa-lanciatore.sh disinstalla-lanciatore.sh genera_pdf.sh genera_pdf_gui.sh
+```
+Oppure in modalità grafica seleziona all'interno della cartella i file *.sh e poi Tasto dx --> prorietà  e metti il flag sul tag "Permessi" ✔️ Eseguibile
+poi da terminale
 
-
-## 🛠️ Installazione per derivate Debian
-   ```bash
-   sudo apt-get install xsltproc wkhtmltopdf openssl
+```bash
+./installa-lanciatore.sh
 ```
 
-## 🛠️ Installazione per OpenSuse
+Lo script chiede se vuoi:
 
-Vanno installati tramite Yast i seguenti file:
-- **xlstproc** (serve per trasformare  XML con un maschera XSL in HTML)
-- **wkhtmltopdf** (serve per trasformare un file HTML in file PDF)
+- installare o aggiornare il lanciatore;
+- disinstallare il lanciatore.
 
-per gli utenti OpenSuse effettuare la ricerca anche per tipo di file in quanto potrebbe essere contenuto il file all'interno di altre librerie/programmi
-## 🎥 Video Dimostrativo
+Durante l'installazione vengono creati:
 
-Guarda il video dimostrativo su [YouTube]([https://www.youtube.com/watch?v=WmFyPfeM_6o](https://youtu.be/WmFyPfeM_6o).
+- un comando in `~/.local/bin/xml-to-pdf-automation`;
+- una voce nel menu in `~/.local/share/applications/xml-to-pdf-automation.desktop`;
+- una copia del lanciatore sul desktop;
+- l'icona in `~/.local/share/icons/hicolor/scalable/apps/xml-to-pdf-automation.svg`.
 
-[![Guarda il Video su YouTube](https://img.youtube.com/vi/WmFyPfeM_6o/0.jpg)]([https://www.youtube.com/watch?v=WmFyPfeM_6o])
+Dopo l'installazione puoi avviare il programma dal menu oppure dall'icona sul desktop.
 
-## Permessi di esecuzione
-Una volta scaricato il file, vanno dati i permessi di esecuzione o graficamente come nel video oppure da terminale col comando ```chmod +x genera_pdf.sh```
-dopo di che si può lanciare col comando ```./genera_pdf.sh``` oppure creare un lanciatore sul vostro desktop come da video.
+## Disinstallazione
 
-## 🤝 Contribuire
+Per rimuovere solo il lanciatore, la voce di menu e l'icona:
 
-I contributi sono benvenuti! Sentitevi liberi di inviare una richiesta di pull o di aprire un problema per suggerire miglioramenti o segnalare bug, sarò ben lieto di modificare e migliorare questo script.
+```bash
+./disinstalla-lanciatore.sh
+```
+
+In alternativa puoi usare:
+
+```bash
+./installa-lanciatore.sh --uninstall
+```
+
+La disinstallazione non cancella la cartella del progetto e non cancella gli script.
+
+## Uso grafico
+
+Avvia **XML to PDF Automation** dal menu o dal desktop.
+
+Il programma chiede:
+
+1. quale foglio di stile usare presenti nella directory di Gestionale Open /home/$CURRENT_USER/.wine/drive_c/Gestionale_Open/Files/Programma_GO/exe :
+   - `FoglioStile.xsl`
+   - `FoglioStileAssoSoftware.xsl`
+   - `FoglioStilePrivati.xsl`
+   - `FoglioStilePA.xsl`
+
+   Se i vostri XSL sono presenti in un altra directoy la riga 9 del file genera_pdf_gui.sh va cambiata la voce : STILE_DIR="/home/$CURRENT_USER/METTI_LA_TUA_DIRECTORY_DOVE_REPERIRE_I_FILE_XSL"
+2. la cartella che contiene i file `.xml` o `.xml.p7m`;
+3. dove salvare i PDF:
+   - nella stessa cartella dei dati;
+   - nella cartella predefinita di Gestionale Open.
+
+Durante la conversione compare una finestra con barra di avanzamento e messaggi sul lavoro in corso.
+
+A fine processo puoi visualizzare il log completo con il dettaglio delle operazioni effettuate.
+
+## Uso da terminale
+
+```bash
+./genera_pdf.sh
+```
+
+La versione da terminale usa la stessa logica della versione grafica.
+
+## Percorsi di Gestionale Open
+
+Per impostazione predefinita i fogli di stile sono cercati in:
+
+```text
+/home/$USER/.wine/drive_c/Gestionale_Open/Files/Programma_GO/exe
+```
+
+La destinazione predefinita usa l'anno corrente:
+
+```text
+/home/$USER/.wine/drive_c/Gestionale_Open/Files/Programma_GO/documenti_UTNX/Fatture_elettroniche_$YEAR
+```
+
+La parte `documenti_UTNX` deve essere adattata al proprio utente/documenti di Gestionale Open se necessario.
+
+## Note importanti
+
+- I file `.xml.p7m` vengono convertiti in `.xml` e il file `.xml` generato non viene cancellato.
+- Se un file `.xml` esiste già, non viene sovrascritto.
+- Tutti i file `.xml` presenti nella cartella vengono poi trasformati in PDF.
+- I file PDF vengono creati in formato A4.
+
+## Licenza
+
+GPL-3.0.
