@@ -89,6 +89,7 @@ Il programma chiede:
    - `FoglioStilePrivati.xsl`
    - `FoglioStilePA.xsl`
 
+il foglio di stile [assosoftware è reperibile a questo link](https://www.assosoftware.it/servizi-offerti/assoinvoice/)
    Se i vostri XSL sono presenti in un altra directoy la riga 9 del file genera_pdf_gui.sh va cambiata la voce : STILE_DIR="/home/$CURRENT_USER/METTI_LA_TUA_DIRECTORY_DOVE_REPERIRE_I_FILE_XSL"
 2. la cartella che contiene i file `.xml` o `.xml.p7m`;
 3. dove salvare i PDF:
